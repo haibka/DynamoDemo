@@ -1,5 +1,5 @@
 /**
- * 
+ * 　新し項目を追加する
  */
 package com.amazonaws.samples;
 
@@ -36,14 +36,15 @@ public class MoviesItemOps01 {
         final Map<String, Object> infoMap = new HashMap<String, Object>();
         infoMap.put("plot", "Nothing happens at all.");
         infoMap.put("rating", 0);
+        infoMap.put("point", 9);
 
         try {
             System.out.println("Adding a new item...");
+            // PutItemOutcome -> return value tuype when add new item to table
             PutItemOutcome outcome = table
                 .putItem(new Item().withPrimaryKey("year", year, "title", title).withMap("info", infoMap));
 
             System.out.println("PutItem succeeded:\n" + outcome.getPutItemResult());
-
         }
         catch (Exception e) {
             System.err.println("Unable to add item: " + year + " " + title);

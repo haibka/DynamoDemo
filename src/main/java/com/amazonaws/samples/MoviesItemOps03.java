@@ -1,5 +1,5 @@
 /**
- * 
+ * 項目を読み取る
  */
 package com.amazonaws.samples;
 

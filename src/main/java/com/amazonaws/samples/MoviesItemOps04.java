@@ -1,5 +1,5 @@
 /**
- * 
+ * 項目を更新する
  */
 package com.amazonaws.samples;
 
@@ -33,8 +33,9 @@ public class MoviesItemOps04 {
         String title = "The Big New Movie";
 
         UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("year", year, "title", title)
-            .withUpdateExpression("set info.rating = info.rating + :val")
+            .withUpdateExpression("set info.rating = info.rating + :val") //指定された項目で実行するすべての更新を記述します
             .withValueMap(new ValueMap().withNumber(":val", 1)).withReturnValues(ReturnValue.UPDATED_NEW);
+        //ReturnValues パラメーターは、DynamoDB に更新された属性 (UPDATED_NEW) のみを返すように指示します。
 
         try {
             System.out.println("Incrementing an atomic counter...");
